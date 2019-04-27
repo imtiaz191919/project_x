@@ -8,12 +8,16 @@
   </a>
   <ul>
     <li><a href="#">Books</a></li>
-    <li><a href="#">Stories</a></li>
     <li><a href="#">Quotes</a></li>
-    <li><a href="#">Uploads</a></li>
-    <li><a href="#">Admin</a></li>
     <?php 
       session_start();
+      if(ISSET($_SESSION['username'])){
+        echo("<li><a href='#'>Stories</a></li>");
+        echo("<li><a href='#'>Uploads</a></li>");
+        echo("<li><a href='#'>Admin</a></li>");
+      } 
+    ?>
+    <?php 
       if(ISSET($_SESSION['username'])){
         echo("<li><a href='email.php'>Email</a></li>");
       } 
