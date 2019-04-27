@@ -1,19 +1,35 @@
 <?php
 	session_start();
 	
-	$e = $_POST['email'];
-	$p = $_POST['password'];
-	
-	if ($e == "imtiaz1919@gmail.com") {
-		if( $p == "arijithsingh") {
-			$_SESSION['username']=$e;
-			header("Location:http://localhost/project_x/index.php");
+	if (isset($_POST["email"]) && isset($_POST["password"])) {
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$encrypted_password = sha1($password);
+		include("../mysqli_connect.php");
+		if (!$dbc) {
+			echo("error connecting msql");
+			exit();
 		} else {
-			echo "Password is incorrect";
-			header("Location:http://localhost/project_x/login.php");
+			$sql_statement = "SELECT username,password FROM users WHERE username = '" . $email ."'" . "AND password = '" . $encrypted_password ."'";
+			$result = mysqli_query($dbc, $sql_statement);
+			if (!$result) {
+				echo "Invalid Credentials";
+			} else {
+				$count = 0;
+				while ($row = mysqli_fetch_array($result)) {
+					$_SESSION['username']=$email;
+					header("Location:http://localhost/project_x/index.php");
+					$count++;
+				}
+				if($count == 0) {
+					echo "Invalid Credentials";
+				}
+			}
 		}
+		$dbc -> close();
 	} else {
-		echo "Username is incorrect";
 		header("Location:http://localhost/project_x/login.php");
 	}
+	
+    
 ?>

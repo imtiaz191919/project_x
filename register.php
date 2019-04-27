@@ -16,20 +16,29 @@
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
   </head>
   <body>
-    <?php include("inc/header.php")?>
+    <?php 
+        include("inc/header.php");
+        if(ISSET($_SESSION['username'])){
+            header("Location:http://localhost/project_x");
+        }
+    ?>
     <section id="mainContainer">
       <section id="contentContainer">
-        <h1>Login Form</h1>
-        <form action="actions/login.php" method="POST">
-          <div class="form-group">
+        <h1>Registration Form</h1>
+        <form action="actions/register.php" method="POST">
+          <div class="form-group col-sm-3 ">
             <label for="login_email">Email address</label>
             <input name="email" type="email" class="form-control" id="login_email" aria-describedby="emailHelp" placeholder="Enter email">
           </div>
-          <div class="form-group">
+          <div class="form-group col-sm-3">
             <label for="login_password">Password</label>
             <input name="password" type="password" class="form-control" id="login_password" placeholder="Password">
           </div>
-          <button type="submit" class="btn btn-primary">Login!</button>
+          <div class="form-group col-sm-3">
+            <label for="login_password_2">Confirm Password</label>
+            <input name="password_2" type="password_2" class="form-control" id="login_password2" placeholder="Confirm Password">
+          </div>
+          <button type="submit" class="btn btn-primary ml-3 mt-3">SignUp!</button>
         </form>
       </section>
     </section>

@@ -27,7 +27,7 @@
         echo("<li><a href='actions/logout.php'>logout</a></li>");
       } else {
         echo("<li><a href='login.php'>Login</a></li>");
-        echo("<li><a href='#'>Register</a></li>");
+        echo("<li><a href='register.php'>Register</a></li>");
       }
     ?>
   </ul>
