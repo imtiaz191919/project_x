@@ -12,8 +12,8 @@
     <?php 
       session_start();
       if(ISSET($_SESSION['username'])){
-        echo("<li><a href='#'>Stories</a></li>");
-        echo("<li><a href='#'>Uploads</a></li>");
+        echo("<li><a href='stories.php'>Stories</a></li>");
+        echo("<li><a href='uploads.php'>Uploads</a></li>");
         echo("<li><a href='#'>Admin</a></li>");
       } 
     ?>

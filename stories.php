@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Send an email</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+		<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Dosis:400' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="styles/styles.css">
+  </head>
+  <body>
+    <?php include("inc/header.php")?>
+    <section id="mainContainer">
+      <section id="contentContainer">
+        <h1>Upload a story file</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Last Modified</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $search_dir = "./uploads";
+                $contents = scandir($search_dir);
+                foreach ($contents as $item) {
+                    if((is_file($search_dir . '/' . $item)) AND (substr($item, 0, 1) != "."))  {
+                        if (strpos($item, $_SESSION["username"]) !== false) {
+                            $file_size = filesize($search_dir . '/' . $item);
+                            $file_name = str_replace($_SESSION["username"]."_", "", $item);
+                            $date_modified = date(filemtime($search_dir . '/' . $item));
+                            $formatted_date = date('d/m/Y h:i:s', $date_modified);         
+                            echo "<tr>
+                            <th scope='row'>1</th>
+                            <td>".$file_name."</td>
+                            <td>".$formatted_date."</td>
+                            </tr>";
+                        }
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
+      </section>
+    </section>
+    <?php include("inc/footer.html")?>
+  </body>
+</html>
