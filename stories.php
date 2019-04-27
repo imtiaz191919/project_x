@@ -16,7 +16,12 @@
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
   </head>
   <body>
-    <?php include("inc/header.php")?>
+    <?php 
+      include("inc/header.php");
+      if(!ISSET($_SESSION['username'])){
+        header("Location:http://localhost/project_x/login.php");
+      }
+    ?>
     <section id="mainContainer">
       <section id="contentContainer">
         <h1>Upload a story file</h1>
