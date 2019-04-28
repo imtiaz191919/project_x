@@ -27,8 +27,8 @@
         <h1>Registration Form</h1>
         <form action="actions/register.php" method="POST">
           <div class="form-group col-sm-3 ">
-            <label for="login_email">Email address</label>
-            <input name="email" type="email" class="form-control" id="login_email" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="login_email">Username</label>
+            <input name="username" type="text" class="form-control" id="login_email" aria-describedby="emailHelp" placeholder="Enter Username">
           </div>
           <div class="form-group col-sm-3">
             <label for="login_password">Password</label>

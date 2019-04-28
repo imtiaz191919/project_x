@@ -1,8 +1,8 @@
 <?php
     session_start();
     
-    if (isset($_POST["email"]) && isset($_POST["password"])) {
-        $email = $_POST['email'];
+    if (isset($_POST["username"]) && isset($_POST["password"])) {
+        $username = $_POST['username'];
         $password = $_POST['password'];
         $password_2 = $_POST['password_2'];
         $encrypted_password = sha1($password);
@@ -11,7 +11,7 @@
             echo("error connecting msql");
             exit();
         } else {
-            $sql_statement = "SELECT username,password FROM users WHERE username = '" . $email ."'";
+            $sql_statement = "SELECT username,password FROM users WHERE username = '" . $username ."'";
             $result = mysqli_query($dbc, $sql_statement);
             if (!$result) {
                 echo "Internal server error";
@@ -21,9 +21,9 @@
                     $count++;
                 }
                 if($count != 0) {
-                    echo "Email Already Exists";
+                    echo "username Already Exists";
                 } else {
-                    $insert_statement = "INSERT INTO `users` (`username`, `password`, `user_dir`, `status`, `admin`) VALUES ('".$email."', '".$encrypted_password."', '".$email."', 'OPEN', 'N')";
+                    $insert_statement = "INSERT INTO `users` (`username`, `password`, `user_dir`, `status`, `admin`) VALUES ('".$username."', '".$encrypted_password."', '".$username."', 'OPEN', 'N')";
                     echo $insert_statement;
                     
                     $insert_result = mysqli_query($dbc, $insert_statement);
@@ -32,7 +32,12 @@
                         printf("Error: %s\n", mysqli_error($dbc));
                     } else {
                         echo "User created sucessfuly";
-                        $_SESSION['username']=$email;
+                        if (file_exists("../../users/".$username)) {
+                            
+                        } else {
+                            mkdir("../../users/".$username,0777);
+                        }
+                        $_SESSION['username']=$username;
                         header("Location:http://localhost/project_x/index.php");
                     }
                 }

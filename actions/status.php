@@ -41,25 +41,18 @@
                 $update_statement = "UPDATE `users` SET `admin` = 'N' WHERE `users`.`username` = '".$username."'";
                 $message = $message . "REVOKED.";
             } else {
-                $search_dir = "./uploads/".$_SESSION["username"];
+                $search_dir = "./../../users/".$username;
                 if(is_dir($search_dir)) {
                   $contents = scandir($search_dir);
                   foreach ($contents as $item) {
-                      if((is_file($search_dir . '/' . $item)))  {
-                              $file_size = filesize($search_dir . '/' . $item);
-                              $file_name = $item;
-                              $date_modified = date(filemtime($search_dir . '/' . $item));
-                              $formatted_date = date('d/m/Y h:i:s', $date_modified);         
-                              echo "<tr>
-                              <td>".$file_name."</td>
-                              <td>".$formatted_date."</td>
-                              </tr>";
-                      }
+                    if((is_file($search_dir . '/' . $item)))  {
+                        unlink($search_dir . '/' . $item);
+                    }
                   }
+                } else {
                 }
-
-                if (file_exists("../uploads/".$username)) {
-                    if (rmdir("../uploads/".$username)) {
+                if (file_exists("../../users/".$username)) {
+                    if (rmdir("../../users/".$username)) {
                     } else {
                     }
                 } else {

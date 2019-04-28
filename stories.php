@@ -34,7 +34,7 @@
             </thead>
             <tbody>
                 <?php
-                $search_dir = "./uploads/".$_SESSION["username"];
+                $search_dir = "./../users/".$_SESSION["username"];
                 if(is_dir($search_dir)) {
                   $contents = scandir($search_dir);
                   foreach ($contents as $item) {
