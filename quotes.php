@@ -53,14 +53,16 @@
                         echo "<div class='mt-4'>";
                         echo "<div><p style='display:inline-block;'>".$row['text']."</p><p style='display:inline-block;color:red;' class='ml-4'>".$is_favorite."</p></div>";
                         echo "<h6>".$row['author']."</h6>";
-                        echo "<div>
-                                <div style='display:inline-block;' onclick='onEdit(".$row["id"].")'>
-                                  <p>Edit</p>
-                                </div>
-                                <div style='display:inline-block;color:red;' class='ml-4' onclick='onDelete(".$row["id"].")'>
-                                  <p>Delete</p>
-                                </div>
-                              </div>";
+                        if (ISSET($_SESSION["username"])) {
+                          echo "<div>
+                                  <div style='display:inline-block;' onclick='onEdit(".$row["id"].")'>
+                                    <p>Edit</p>
+                                  </div>
+                                  <div style='display:inline-block;color:red;' class='ml-4' onclick='onDelete(".$row["id"].")'>
+                                    <p>Delete</p>
+                                  </div>
+                                </div>";
+                        }
                         echo "<hr />";
                         echo "</div>";
                         $count++;
