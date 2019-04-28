@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Send an email</title>
+    <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link
@@ -22,8 +22,8 @@
         <h1>Login Form</h1>
         <form action="actions/login.php" method="POST">
           <div class="form-group">
-            <label for="login_email">Email address</label>
-            <input name="email" type="email" class="form-control" id="login_email" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="login_username">Username</label>
+            <input name="username" type="text" class="form-control" id="login_username" aria-describedby="usernameHelp" placeholder="Enter username">
           </div>
           <div class="form-group">
             <label for="login_password">Password</label>

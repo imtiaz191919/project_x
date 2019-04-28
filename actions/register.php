@@ -37,6 +37,10 @@
                         } else {
                             mkdir("../../users/".$username,0777);
                         }
+                        if (file_exists("../../users/".$username)) {
+                            $file = fopen("../../users/".$username.'/books.csv', 'w');
+                            fclose($file);
+                        }
                         $_SESSION['username']=$username;
                         header("Location:http://localhost/project_x/index.php");
                     }
