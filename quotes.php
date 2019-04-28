@@ -14,6 +14,11 @@
 		<link href='https://fonts.googleapis.com/css?family=Dosis:400' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <script type="text/javascript">
+        function onEdit(id) {
+          window.location.href = "http://localhost/project_x/edit_quote.php?id=" + id;
+        }
+    </script>
   </head>
   <body>
     <?php 
@@ -33,7 +38,7 @@
                 echo("<h3>error connecting to database</h3>");
                 exit();
             } else {
-                $sql_statement = "SELECT text,author,favorite,date_entered FROM quotes ORDER BY `quotes`.`date_entered` DESC";
+                $sql_statement = "SELECT id,text,author,favorite,date_entered FROM quotes ORDER BY `quotes`.`date_entered` DESC";
                 $result = mysqli_query($dbc, $sql_statement);
                 if (!$result) {
                     echo "<h3>Internal Server Error<h3>";
@@ -45,6 +50,14 @@
                         echo "<div class='mt-4'>";
                         echo "<div><p style='display:inline-block;'>".$row['text']."</p><p style='display:inline-block;color:red;' class='ml-4'>".$is_favorite."</p></div>";
                         echo "<h6>".$row['author']."</h6>";
+                        echo "<div>
+                                <div style='display:inline-block;' onclick='onEdit(".$row["id"].")'>
+                                  <p>Edit</p>
+                                </div>
+                                <div style='display:inline-block;color:red;' class='ml-4'>
+                                  <p>Delete</p>
+                                </div>
+                              </div>";
                         echo "<hr />";
                         echo "</div>";
                         $count++;
