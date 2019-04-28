@@ -14,7 +14,9 @@
       if(ISSET($_SESSION['username'])){
         echo("<li><a href='stories.php'>Stories</a></li>");
         echo("<li><a href='uploads.php'>Uploads</a></li>");
-        echo("<li><a href='#'>Admin</a></li>");
+        if (ISSET($_SESSION['is_admin']) && $_SESSION['is_admin']) {
+          echo("<li><a href='admin.php'>Admin</a></li>");
+        }
       } 
     ?>
     <?php 
