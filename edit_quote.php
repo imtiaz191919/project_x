@@ -33,7 +33,6 @@
             } else {
                 $count = 0;
                 while ($row = mysqli_fetch_array($result)) {
-                    $_SESSION["editing_quote_text"]=$row["text"];
                     $_SESSION["editing_quote_id"]=$row["id"];
                     $_SESSION["editing_quote_text"]=$row["text"];
                     $_SESSION["editing_author"]=$row["author"];

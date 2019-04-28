@@ -3,7 +3,7 @@
     
     if (isset($_POST["author"]) && isset($_POST["quote_text"])) {
         $author = $_POST['author'];
-        $quote=$_POST["quote_text"];
+        $quote=addslashes($_POST["quote_text"]);
         $favorite = isset($_POST["favorite"]) ? 'Y' : 'N';
         $id=$_SESSION["editing_quote_id"];
         $date = date("Y-m-d h:i:s");
