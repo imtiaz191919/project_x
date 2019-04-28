@@ -16,7 +16,10 @@
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
   </head>
   <body>
-    <?php include("inc/header.php")?>
+    <?php 
+      include("inc/header.php");
+      if (ISSET($_SESSION["username"])) {
+    ?>
     <section id="mainContainer">
       <section id="contentContainer">
         <h1>Add a book</h1>
@@ -67,6 +70,25 @@
         ?>
       </section>
     </section>
-    <?php include("inc/footer.html")?>
+
+    <?php 
+      } else {
+    ?>
+
+<section id="mainContainer">
+      <section id="contentContainer">
+        <h1>Example Books</h1>
+        <ul>
+          <li>The Catcher in the Rye</li>
+          <li>Nine Stories</li>
+          <li>Franny and Zooey</li>
+          <li>Raise High the Roof Beam, Carpenters and Seymour. An Introduction</li>
+        </ul>
+      </section>
+    </section>
+    <?php 
+      }
+      include("inc/footer.html");
+    ?>
   </body>
 </html>
