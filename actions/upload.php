@@ -10,8 +10,15 @@ if(!in_array($ext,$allowed) ) {
     echo 'File Format is not allowed';
     header("Location:http://localhost/project_x/uploads.php");
 } else {
-    if (move_uploaded_file ($_FILES['uploaded_file']['tmp_name'],"../uploads/{$_SESSION['username']}_{$_FILES['uploaded_file']['name']}")) {
+    
+    if (file_exists("../uploads/".$_SESSION['username'])) {
+        
+    } else {
+        mkdir("../uploads/".$_SESSION['username'],0777);
+    }
+    if (move_uploaded_file ($_FILES['uploaded_file']['tmp_name'],"../uploads/{$_SESSION['username']}/{$_FILES['uploaded_file']['name']}")) {
         echo "uploaded";
+        header("Location:http://localhost/project_x/stories.php");
     } else {
         echo $_FILES['uploaded_file']['error'];
         echo "UNABLE TO UPLOAD FILE ";

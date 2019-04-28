@@ -28,28 +28,24 @@
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Last Modified</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $search_dir = "./uploads";
+                $search_dir = "./uploads/".$_SESSION["username"];
                 $contents = scandir($search_dir);
                 foreach ($contents as $item) {
-                    if((is_file($search_dir . '/' . $item)) AND (substr($item, 0, 1) != "."))  {
-                        if (strpos($item, $_SESSION["username"]) !== false) {
+                    if((is_file($search_dir . '/' . $item)))  {
                             $file_size = filesize($search_dir . '/' . $item);
-                            $file_name = str_replace($_SESSION["username"]."_", "", $item);
+                            $file_name = $item;
                             $date_modified = date(filemtime($search_dir . '/' . $item));
                             $formatted_date = date('d/m/Y h:i:s', $date_modified);         
                             echo "<tr>
-                            <th scope='row'>1</th>
                             <td>".$file_name."</td>
                             <td>".$formatted_date."</td>
                             </tr>";
-                        }
                     }
                 }
                 ?>
