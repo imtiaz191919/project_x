@@ -8,7 +8,7 @@
   </a>
   <ul>
     <li><a href="#">Books</a></li>
-    <li><a href="#">Quotes</a></li>
+    <li><a href="quotes.php">Quotes</a></li>
     <?php 
       session_start();
       if(ISSET($_SESSION['username'])){
