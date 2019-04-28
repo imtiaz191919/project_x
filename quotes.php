@@ -18,6 +18,9 @@
         function onEdit(id) {
           window.location.href = "http://localhost/project_x/edit_quote.php?id=" + id;
         }
+        function onDelete(id) {
+          window.location.href = "http://localhost/project_x/actions/delete_quote.php?id=" + id;
+        }
     </script>
   </head>
   <body>
@@ -54,7 +57,7 @@
                                 <div style='display:inline-block;' onclick='onEdit(".$row["id"].")'>
                                   <p>Edit</p>
                                 </div>
-                                <div style='display:inline-block;color:red;' class='ml-4'>
+                                <div style='display:inline-block;color:red;' class='ml-4' onclick='onDelete(".$row["id"].")'>
                                   <p>Delete</p>
                                 </div>
                               </div>";
