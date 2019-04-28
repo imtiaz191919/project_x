@@ -7,8 +7,8 @@
     Raise High the Roof Beam!
   </a>
   <ul>
-    <li><a href="#">Books</a></li>
-    <li><a href="quotes.php">Quotes</a></li>
+    <li><a href="http://localhost/project_x/books.php">Books</a></li>
+    <li><a href="http://localhost/project_x/quotes.php">Quotes</a></li>
     <?php 
       session_start();
       if(ISSET($_SESSION['username'])){

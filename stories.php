@@ -38,7 +38,7 @@
                 if(is_dir($search_dir)) {
                   $contents = scandir($search_dir);
                   foreach ($contents as $item) {
-                      if((is_file($search_dir . '/' . $item)))  {
+                      if((is_file($search_dir . '/' . $item)) && strpos($item, '.csv') == false)  {
                               $file_size = filesize($search_dir . '/' . $item);
                               $file_name = $item;
                               $date_modified = date(filemtime($search_dir . '/' . $item));
