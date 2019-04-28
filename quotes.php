@@ -23,12 +23,17 @@
       <section id="contentContainer">
         <h1>Quotes</h1>
         <?php
+            if(ISSET($_SESSION['username'])){
+                echo('<div onclick="location.href='."'add_quote.php'".';"><h3 class='."'mt-4 mb-4'".' style='."'color=blue;'".'>Add a quote</h3></div>');
+            }
+        ?>
+        <?php
             include("mysqli_connect.php");
             if (!$dbc) {
-                echo("error connecting to database");
+                echo("<h3>error connecting to database</h3>");
                 exit();
             } else {
-                $sql_statement = "SELECT text,author,favorite,date_entered FROM quotes";
+                $sql_statement = "SELECT text,author,favorite,date_entered FROM quotes ORDER BY `quotes`.`date_entered` DESC";
                 $result = mysqli_query($dbc, $sql_statement);
                 if (!$result) {
                     echo "<h3>Internal Server Error<h3>";
