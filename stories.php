@@ -35,18 +35,20 @@
             <tbody>
                 <?php
                 $search_dir = "./uploads/".$_SESSION["username"];
-                $contents = scandir($search_dir);
-                foreach ($contents as $item) {
-                    if((is_file($search_dir . '/' . $item)))  {
-                            $file_size = filesize($search_dir . '/' . $item);
-                            $file_name = $item;
-                            $date_modified = date(filemtime($search_dir . '/' . $item));
-                            $formatted_date = date('d/m/Y h:i:s', $date_modified);         
-                            echo "<tr>
-                            <td>".$file_name."</td>
-                            <td>".$formatted_date."</td>
-                            </tr>";
-                    }
+                if(is_dir($search_dir)) {
+                  $contents = scandir($search_dir);
+                  foreach ($contents as $item) {
+                      if((is_file($search_dir . '/' . $item)))  {
+                              $file_size = filesize($search_dir . '/' . $item);
+                              $file_name = $item;
+                              $date_modified = date(filemtime($search_dir . '/' . $item));
+                              $formatted_date = date('d/m/Y h:i:s', $date_modified);         
+                              echo "<tr>
+                              <td>".$file_name."</td>
+                              <td>".$formatted_date."</td>
+                              </tr>";
+                      }
+                  }
                 }
                 ?>
             </tbody>
