@@ -14,6 +14,7 @@
             $result = mysqli_query($dbc, $sql_statement);
             if (!$result) {
                 header("Location:http://localhost/project_x/register.php?message=unable_to_connect_to_db&type=error");
+                exit();
             } else {
                 $count = 0;
                 while ($row = mysqli_fetch_array($result)) {
@@ -27,6 +28,7 @@
                     $insert_result = mysqli_query($dbc, $insert_statement);
                     if (!$insert_result) {
                         header("Location:http://localhost/project_x/register.php?message=unable_to_connect_to_db&type=error");
+                        exit();
                     } else {
                         if (file_exists("../../users/".$username)) {
                         } else {
@@ -38,10 +40,12 @@
                         }
                         $_SESSION['username']=$username;
                         header("Location:http://localhost/project_x/index.php");
+                        exit();
                     }
                 }
             }
         }
-    $dbc -> close();}
+    $dbc -> close();
+    }
     header("Location:http://localhost/project_x/register.php");
 ?>
