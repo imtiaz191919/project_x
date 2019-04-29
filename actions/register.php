@@ -43,4 +43,5 @@
             }
         }
     $dbc -> close();}
+    header("Location:http://localhost/project_x/register.php");
 ?>

@@ -18,6 +18,9 @@
   <body>
     <?php 
         include("inc/header.php");
+        if (!(ISSET($_SESSION["username"]) && ISSET($_SESSION["is_admin"]))) {
+            header("Location:http://localhost/project_x/login.php?message=need_to_login&type=error");
+        }
         include("../mysqli_connect.php");
     ?>
     <?php 

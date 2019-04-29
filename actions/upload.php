@@ -7,8 +7,7 @@ $allowed =  array('txt','pdf','doc','docx');
 $filename = $_FILES['uploaded_file']['name'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 if(!in_array($ext,$allowed) ) {
-    echo 'File Format is not allowed';
-    header("Location:http://localhost/project_x/uploads.php");
+    header("Location:http://localhost/project_x/uploads.php?message=invalid_format&type=error");
 } else {
     
     if (file_exists("../../users/".$_SESSION['username'])) {
@@ -21,7 +20,7 @@ if(!in_array($ext,$allowed) ) {
         header("Location:http://localhost/project_x/stories.php");
     } else {
         echo $_FILES['uploaded_file']['error'];
-        echo "UNABLE TO UPLOAD FILE ";
+        header("Location:http://localhost/project_x/uploads.php?message=unable_to_upload_file&type=error");
     }
 }
 ?>

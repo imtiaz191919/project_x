@@ -18,6 +18,9 @@
   <body>
     <?php 
       include("inc/header.php");
+      if (ISSET($_SESSION["username"])) {
+        header("Location:http://localhost/project_x/index.php");
+      }
     ?>
     <section id="mainContainer">
       <section id="contentContainer">
@@ -31,6 +34,8 @@
                 $message = "Your account has been locked by the admin.";
               } else if ($_GET["message"] == "invalid_credentials") {
                 $message = "Invalid username or password.";
+              } else if ($_GET["message"] == "need_to_login") {
+                $message = "Need to login first.";
               }
               if( $_GET["type"] == "error") {
                 print('<div style="background-color: salmon"><p class="ml-4">'.$message.'</p></div>');

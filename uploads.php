@@ -19,11 +19,31 @@
     <?php include("inc/header.php")?>
     <section id="mainContainer">
       <section id="contentContainer">
+        <?php
+          if (ISSET($_GET["message"])) {
+            if (ISSET($_GET["type"])) {
+              $message = "";
+              if ($_GET["message"] == "unable_to_upload_file") {
+                $message = "Unable to upload file.";
+              } else if ($_GET["message"] == "invalid_format") {
+                $message = "File has to be of one of these formats txt,pdf,doc,docx.";
+              }
+              if( $_GET["type"] == "error") {
+                print('<div style="background-color: salmon"><p class="ml-4">'.$message.'</p></div>');
+              } else {
+                print('<div style="background-color: lightgreen"><p class="ml-4">'.$message.'</p></div>');
+              }
+            } else {
+              print('<div style="background-color: lightgreen"><p class="ml-4">'.$message.'</p></div>');
+            }
+          }
+        ?>
         <h1>Upload a story file</h1>
+        <p class="mt-4 mb-4">File has to be of one of these formats txt,pdf,doc,docx.</p>
         <form action="actions/upload.php" method="post" enctype="multipart/form-data">
-            Select image to upload:
+            Select file to upload:
             <input type="file" name="uploaded_file" id="uploaded_file">
-            <input type="submit" value="Upload Image" name="submit">
+            <input type="submit" value="Upload File" name="submit">
         </form>
       </section>
     </section>
