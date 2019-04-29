@@ -16,9 +16,32 @@
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
   </head>
   <body>
-    <?php include("inc/header.php")?>
+    <?php 
+      include("inc/header.php");
+    ?>
     <section id="mainContainer">
       <section id="contentContainer">
+        <?php
+          if (ISSET($_GET["message"])) {
+            if (ISSET($_GET["type"])) {
+              $message = "";
+              if ($_GET["message"] == "unable_to_connect_to_db") {
+                $message = "Unable to connect to database.";
+              } else if ($_GET["message"] == "account_locked") {
+                $message = "Your account has been locked by the admin.";
+              } else if ($_GET["message"] == "invalid_credentials") {
+                $message = "Invalid username or password.";
+              }
+              if( $_GET["type"] == "error") {
+                print('<div style="background-color: salmon"><p class="ml-4">'.$message.'</p></div>');
+              } else {
+                print('<div style="background-color: lightgreen"><p class="ml-4">'.$message.'</p></div>');
+              }
+            } else {
+              print('<div style="background-color: lightgreen"><p class="ml-4">'.$message.'</p></div>');
+            }
+          }
+        ?>
         <h1>Login Form</h1>
         <form action="actions/login.php" method="POST">
           <div class="form-group">

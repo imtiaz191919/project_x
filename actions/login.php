@@ -13,7 +13,7 @@
 			$sql_statement = "SELECT username,password,status,admin FROM users WHERE username = '" . $username ."'" . "AND password = '" . $encrypted_password ."'";
 			$result = mysqli_query($dbc, $sql_statement);
 			if (!$result) {
-				echo "Invalid Credentials";
+				header("Location:http://localhost/project_x/login.php?message=unable_to_connect_to_db&type=error");
 			} else {
 				$count = 0;
 				while ($row = mysqli_fetch_array($result)) {
@@ -21,7 +21,7 @@
 					if ($row["status"] == "OPEN") {
 						header("Location:http://localhost/project_x/index.php");
 					} else if ($row["status"] == "LOCKED") {
-						echo "Your account is locked by the administrator";
+						header("Location:http://localhost/project_x/login.php?message=account_locked&type=error");
 					}
 					
 					if ($row["admin"] == 'Y') {
@@ -30,7 +30,7 @@
 					$count++;
 				}
 				if($count == 0) {
-					echo "Invalid Credentials";
+					header("Location:http://localhost/project_x/login.php?message=invalid_credentials&type=error");
 				}
 			}
 		}
