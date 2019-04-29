@@ -14,26 +14,21 @@
             $sql_statement = "SELECT username,password FROM users WHERE username = '" . $username ."'";
             $result = mysqli_query($dbc, $sql_statement);
             if (!$result) {
-                echo "Internal server error";
+                header("Location:http://localhost/project_x/register.php?message=unable_to_connect_to_db&type=error");
             } else {
                 $count = 0;
                 while ($row = mysqli_fetch_array($result)) {
                     $count++;
                 }
                 if($count != 0) {
-                    echo "username Already Exists";
+                    header("Location:http://localhost/project_x/register.php?message=username_already_exists&type=error");
                 } else {
                     $insert_statement = "INSERT INTO `users` (`username`, `password`, `user_dir`, `status`, `admin`) VALUES ('".$username."', '".$encrypted_password."', '".$username."', 'OPEN', 'N')";
-                    echo $insert_statement;
-                    
                     $insert_result = mysqli_query($dbc, $insert_statement);
                     if (!$insert_result) {
-                        echo "Internal server error";
-                        printf("Error: %s\n", mysqli_error($dbc));
+                        header("Location:http://localhost/project_x/register.php?message=unable_to_connect_to_db&type=error");
                     } else {
-                        echo "User created sucessfuly";
                         if (file_exists("../../users/".$username)) {
-                            
                         } else {
                             mkdir("../../users/".$username,0777);
                         }

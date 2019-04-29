@@ -24,6 +24,25 @@
     ?>
     <section id="mainContainer">
       <section id="contentContainer">
+        <?php
+          if (ISSET($_GET["message"])) {
+            if (ISSET($_GET["type"])) {
+              $message = "";
+              if ($_GET["message"] == "unable_to_connect_to_db") {
+                $message = "Unable to connect to database.";
+              } else if ($_GET["message"] == "username_already_exists") {
+                $message = "Username already exists.";
+              }
+              if( $_GET["type"] == "error") {
+                print('<div style="background-color: salmon"><p class="ml-4">'.$message.'</p></div>');
+              } else {
+                print('<div style="background-color: lightgreen"><p class="ml-4">'.$message.'</p></div>');
+              }
+            } else {
+              print('<div style="background-color: lightgreen"><p class="ml-4">'.$message.'</p></div>');
+            }
+          }
+        ?>
         <h1>Registration Form</h1>
         <form action="actions/register.php" method="POST">
           <div class="form-group col-sm-3 ">
