@@ -23,7 +23,7 @@
         }
     </script>
   </head>
-  <body>
+  <body onload="startTime()">
     <?php 
       include("inc/header.php");
     ?>

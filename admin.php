@@ -15,7 +15,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
   </head>
-  <body>
+  <body onload="startTime()">
     <?php 
         include("inc/header.php");
         if (!(ISSET($_SESSION["username"]) && ISSET($_SESSION["is_admin"]))) {
