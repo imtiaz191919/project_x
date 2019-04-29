@@ -18,7 +18,7 @@
   <body>
     <?php 
         include("inc/header.php");
-        include("mysqli_connect.php");
+        include("../mysqli_connect.php");
     ?>
     <?php 
         if (ISSET($_POST["selected_user"]) && $_POST["selected_user"] != "None") {

@@ -18,7 +18,7 @@
   <body>
     <?php 
         include("../inc/header.php");
-        include("../mysqli_connect.php");
+        include("../../mysqli_connect.php");
 
         $selected_status = $_POST["status"];
         $username = $_POST["username"];

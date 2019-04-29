@@ -36,7 +36,7 @@
             }
         ?>
         <?php
-            include("mysqli_connect.php");
+            include("../mysqli_connect.php");
             if (!$dbc) {
                 echo("<h3>error connecting to database</h3>");
                 exit();

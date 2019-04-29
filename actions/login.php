@@ -5,7 +5,7 @@
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		$encrypted_password = sha1($password);
-		include("../mysqli_connect.php");
+		include("../../mysqli_connect.php");
 		if (!$dbc) {
 			echo("error connecting msql");
 			exit();

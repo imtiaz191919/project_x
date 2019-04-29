@@ -1,5 +1,5 @@
 <?php 
-    include("../config.php");
+    include("../../config.php");
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
 	use PHPMailer\PHPMailer\SMTP;

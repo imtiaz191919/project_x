@@ -7,7 +7,7 @@
         $favorite = isset($_POST["favorite"]) ? 'Y' : 'N';
         $id=$_SESSION["editing_quote_id"];
         $date = date("Y-m-d h:i:s");
-        include("../mysqli_connect.php");
+        include("../../mysqli_connect.php");
 
         if (!$dbc) {
             echo("error connecting msql");
