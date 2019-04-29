@@ -2,7 +2,11 @@
   <div id="date"></div>
   <script>
     function startTime() {
-      var today = new Date();
+      var today = new Date(
+        new Date().toLocaleString("en-US", {
+          timeZone: "America/Belize"
+        })
+      );
       var hr = today.getHours();
       var min = today.getMinutes();
       var sec = today.getSeconds();
