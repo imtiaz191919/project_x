@@ -1,6 +1,5 @@
 <?php
     session_start();
-    
     if (isset($_POST["username"]) && isset($_POST["password"])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -22,6 +21,7 @@
                 }
                 if($count != 0) {
                     header("Location:http://localhost/project_x/register.php?message=username_already_exists&type=error");
+                    exit();
                 } else {
                     $insert_statement = "INSERT INTO `users` (`username`, `password`, `user_dir`, `status`, `admin`) VALUES ('".$username."', '".$encrypted_password."', '".$username."', 'OPEN', 'N')";
                     $insert_result = mysqli_query($dbc, $insert_statement);
